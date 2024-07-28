@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Speech</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    strong {
+      font-weight: bold;
+    }
+
+    p {
+      margin-bottom: 1rem;
+    }
+
+    .greetings {
+      font-size: 1.5rem;
+      color: #333;
+      margin: 10px 0;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    body::after {
+      content: "Annonymous - Don't try to suppress the voice of the people!";
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      font-size: 0.8rem;
+      font-weight: bold;
+      opacity: 0.5;
+      color: #333;
+    }
+
+    #toggleTranslationButton {
+      padding: 10px 20px;
+      background-color: #333;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #toggleTranslationButton:hover {
+      background-color: #555;
+    }
+
+    .title {
+      font-size: 0.9rem;
+      font-weight: bold;
+      color: #333;
+      margin: 20px 0;
+      text-align: center;
+      opacity: 0.8;
+    }
+
+    .content {
+      margin: 20px 0;
+    }
+
+    .print-btn {
+      padding: 10px 20px;
+      background-color: #333;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .print-btn:hover {
+      background-color: #555;
+    }
+
+    .text-right {
+      text-align: right;
+    }
+
+    .extra-bold {
+      font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+      font-weight: 1000;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 0 10px;
+      }
+    }
+
+    @media print {
+      .print-btn {
+        display: none;
+      }
+
+      #toggleTranslationButton {
+        display: none;
+      }
+
+      .container {
+        max-width: 100%;
+        margin: 0;
+        padding: 0;
+      }
+
+      .greetings {
+        font-size: 1.2rem;
+      }
+
+      p {
+        margin-bottom: 0.5rem;
+      }
+
+      strong {
+        font-weight: bold;
+      }
+
+      .title {
+        font-size: 0.9rem;
+        margin: 0.6in 0 0 0;
+      }
+
+      .content {
+        margin: 0 0.6in;
+      }
+
+      .extra-bold {
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        font-weight: 1000;
+      }
+
+      @page {
+        size: A4;
+        margin: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container mt-2 text-right">
+    <button id="toggleTranslationButton">English</button>
+    <button class="print-btn">Print</button>
+  </div>
+
+  <div class="title"></div>
+  <div class="content"></div>
+
+  <script>
+    var english_title = 'There is no structure more valuable than life!';
+    var bangla_title = 'জীবনের চেয়ে মহামূল্যবান কোনও স্থাপনা নেই!';
+    
+    var english_content = `
+      <div class="container my-3">
+      <strong class="greetings"> People of Bangladesh, </strong>
+
+      <p>
+        There was a time when this great nation stood together, united in the
+        pursuit of freedom, justice, and equality. Today, we find ourselves at a
+        crossroads once more, facing a system that seeks to divide and suppress
+        us.
+      </p>
+
+      <p>
+        For years, we have watched as our voices have been silenced, our rights
+        trampled upon, and our futures dimmed by those who fear the power of the
+        people. The recent events have shown us the lengths to which this
+        government will go to maintain control - cutting our communications,
+        closing our universities, and deploying force against peaceful protests.
+      </p>
+
+      <p>
+        For over five days, broadband Wi-Fi was turned off, and for more than
+        ten days, mobile internet services were shut down. This complete
+        communication blackout was a deliberate attempt to silence us, to cut us
+        off from the world, and to suppress our unity and our voice. This is not
+        democracy; this is dictatorship.
+      </p>
+
+      <p>
+        But remember, my fellow Bangladeshis, that governments should fear their
+        people, not the other way around. Our ancestors fought valiantly for our
+        independence, and now it is our turn to stand up for what is rightfully
+        ours.
+      </p>
+
+      <p>
+        The quotas, the violence, the suppression of our youth - these are but
+        symptoms of a deeper malady that seeks to rob us of our dignity and our
+        dreams. We must not let fear or intimidation keep us from demanding the
+        change we deserve.
+      </p>
+
+      <p>
+        The power of the people is greater than the people in power. We must
+        come together, not as divided factions, but as one nation, united in our
+        quest for a brighter future. Let us peacefully demand the end of unjust
+        quotas, the restoration of our communication channels, and the freedom
+        to pursue our dreams without fear of retribution.
+      </p>
+
+      <p>
+        Today, we must also honor our brothers and sisters who have paid the
+        ultimate price for this struggle. The government has accepted the
+        rightful demands of the students regarding the quota system, but we
+        cannot forget the lives lost in this fight. We must demand proper
+        justice for each and every death. These brave souls have been taken from
+        us too soon, and their sacrifices must not be in vain.
+      </p>
+
+      <p>
+        Rise, Bangladesh! Let our voices ring out in every corner of this
+        nation, in every village, every town, and every city. We will not be
+        silenced. We will not be suppressed. Together, we will build a
+        Bangladesh where justice, equality, and opportunity are not just dreams,
+        but realities for all.
+      </p>
+
+      <p>
+        Today, we stand on the precipice of history. Let us make our mark, not
+        with violence, but with unity and unwavering resolve. For a better
+        tomorrow, for our children, for our future - let us rise.
+      </p>
+
+      <strong>
+        Remember, the power is in your hands. Together, we are unstoppable.
+      </strong>
+    </div>
+      `;
+
+    var bangla_content = `
+    <div class="container my-3">
+    <strong class="greetings extra-bold"> বাংলাদেশের জনগণ, </strong>
+
+    <p>
+      একটি সময় ছিল যখন এই মহান জাতি একসাথে দাঁড়িয়েছিল, স্বাধীনতা,
+      ন্যায়বিচার এবং সমতার সন্ধানে ঐক্যবদ্ধ ছিল। আজ, আমরা আবার একটি সংকটময়
+      মুহূর্তে দাঁড়িয়ে আছি, একটি সিস্টেমের মুখোমুখি যা আমাদের বিভক্ত এবং
+      দমিত করতে চায়।
+    </p>
+
+    <p>
+      বছরের পর বছর, আমরা দেখেছি আমাদের কণ্ঠস্বরকে নীরব করা হয়েছে, আমাদের
+      অধিকারকে পদদলিত করা হয়েছে, এবং আমাদের ভবিষ্যতকে তারা ম্লান করেছে যারা
+      জনগণের ক্ষমতাকে ভয় পায়। সাম্প্রতিক ঘটনাগুলি আমাদের দেখিয়েছে এই সরকার
+      ক্ষমতা বজায় রাখতে কতদূর যেতে পারে - আমাদের যোগাযোগ কেটে দেওয়া, আমাদের
+      বিশ্ববিদ্যালয় বন্ধ করে দেওয়া, এবং শান্তিপূর্ণ প্রতিবাদকারীদের বিরুদ্ধে
+      বলপ্রয়োগ করা।
+    </p>
+
+    <p>
+      পাঁচ দিনের বেশি সময় ধরে ব্রডব্যান্ড ওয়াইফাই বন্ধ ছিল, এবং দশ দিনের
+      বেশি সময় ধরে মোবাইল ইন্টারনেট সেবা বন্ধ ছিল। এই সম্পূর্ণ যোগাযোগ
+      বিচ্ছিন্নতা আমাদের নীরব করার, আমাদের বিশ্ব থেকে বিচ্ছিন্ন করার এবং
+      আমাদের ঐক্য এবং কণ্ঠস্বরকে দমন করার একটি ইচ্ছাকৃত চেষ্টা ছিল। এটি
+      গণতন্ত্র নয়; এটি স্বৈরাচার।
+    </p>
+
+    <p>
+      কিন্তু মনে রাখবেন, আমার প্রিয় বাংলাদেশীরা, সরকারকে তাদের জনগণকে ভয় করা
+      উচিত, বিপরীত নয়। আমাদের পূর্বপুরুষরা আমাদের স্বাধীনতার জন্য সাহসিকতার
+      সাথে লড়াই করেছিলেন, এবং এখন এটি আমাদের পালা যা আমাদের অধিকার স্বরূপ।
+    </p>
+
+    <p>
+      কোটা, সহিংসতা, আমাদের যুব সমাজের দমন - এগুলি একটি গভীরতর রোগের লক্ষণ
+      মাত্র যা আমাদের মর্যাদা এবং স্বপ্নগুলি ছিনিয়ে নিতে চায়। আমরা ভয় বা
+      ভীতি দ্বারা আমাদের প্রাপ্য পরিবর্তন দাবি থেকে বিরত থাকতে পারি না।
+    </p>
+
+    <p>
+      জনগণের শক্তি ক্ষমতাসীনদের চেয়ে বেশি। আমরা বিভক্ত গোষ্ঠী হিসাবে নয়,
+      একটি জাতি হিসাবে একসাথে আসতে হবে, আমাদের উজ্জ্বল ভবিষ্যতের সন্ধানে
+      ঐক্যবদ্ধ হতে হবে। আসুন আমরা শান্তিপূর্ণভাবে অন্যায় কোটা শেষ করার,
+      আমাদের যোগাযোগ চ্যানেলগুলি পুনরুদ্ধার করার, এবং প্রতিহিংসার ভয় ছাড়াই
+      আমাদের স্বপ্নগুলি অনুসরণ করার স্বাধীনতা দাবি করি।
+    </p>
+
+    <p>
+      আজ, আমাদের অবশ্যই আমাদের ভাই ও বোনদের সম্মান করতে হবে যারা এই সংগ্রামের
+      জন্য চূড়ান্ত মূল্য দিয়েছে। সরকার কোটা ব্যবস্থার বিষয়ে ছাত্রদের
+      ন্যায্য দাবি মেনে নিয়েছে, কিন্তু আমরা এই লড়াইয়ে হারানো জীবনগুলি ভুলতে
+      পারি না। আমরা প্রতিটি মৃত্যুর সঠিক বিচার দাবি করতে হবে। এই সাহসী
+      আত্মাগুলি আমাদের থেকে খুব তাড়াতাড়ি কেড়ে নেওয়া হয়েছে, এবং তাদের
+      আত্মত্যাগ বৃথা যেতে দেওয়া যায় না।
+    </p>
+
+    <p>
+      উঠে দাঁড়াও, বাংলাদেশ! আমাদের কণ্ঠস্বর এই জাতির প্রতিটি কোণে, প্রতিটি
+      গ্রামে, প্রতিটি শহরে এবং প্রতিটি নগরে ধ্বনিত হোক। আমরা নীরব থাকব না।
+      আমরা দমন হতে দেব না। একসাথে, আমরা এমন একটি বাংলাদেশ গড়ে তুলব যেখানে
+      ন্যায়বিচার, সমতা এবং সুযোগ শুধু স্বপ্ন নয়, সবার জন্য বাস্তবতা হবে।
+    </p>
+
+    <p>
+      আজ, আমরা ইতিহাসের প্রান্তে দাঁড়িয়ে আছি। আসুন আমরা আমাদের চিহ্ন রাখি,
+      সহিংসতা নয়, বরং ঐক্য এবং অটল সংকল্পের সাথে। একটি ভাল আগামীকালের জন্য,
+      আমাদের শিশুদের জন্য, আমাদের ভবিষ্যতের জন্য - আসুন আমরা উঠি।
+    </p>
+
+    <strong class="extra-bold"> মনে রাখবেন, শক্তি আপনার হাতে। একসাথে, আমরা অপরাজেয়। </strong>
+  </div>
+    `;
+
+    document.querySelector(".title").innerHTML = bangla_title;
+    document.querySelector(".content").innerHTML = bangla_content;
+
+    function toggleTranslation() {
+      var title = document.querySelector(".title");
+      var content = document.querySelector(".content");
+      var toggleButton = document.getElementById("toggleTranslationButton");
+
+      if (toggleButton.innerText === "English") {
+        title.innerHTML = english_title;
+        content.innerHTML = english_content;
+        toggleButton.innerText = "Bangla";
+      } else if (toggleButton.innerText === "Bangla") {
+        title.innerHTML = bangla_title;
+        content.innerHTML = bangla_content;
+        toggleButton.innerText = "English";
+      }
+    }
+
+    document
+      .getElementById("toggleTranslationButton")
+      .addEventListener("click", toggleTranslation);
+    document
+      .querySelector(".print-btn")
+      .addEventListener("click", function () {
+        window.print();
+      });
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
